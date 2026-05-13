@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>CARD EDITOR</title>
+</head>
+
+
+<body>
+    <h1>Add your card to database</h1>
+    
+    <form action="/save" method="POST">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Card Name">
+        </div>
+        
+        <br>
+        
+        <div>
+            <label for="mana-cost">Mana Cost:</label>
+            <input type="number" id="mana-cost" name="mana-cost" placeholder="Cost of Card" value="0">
+        </div>
+
+        <br>
+
+        <div>
+            <input type="radio" id="minion" name="card-type" value="minion">
+            <label for="minion">Minion</label><br>
+            <input type="radio" id="spell" name="card-type" value="spell">
+            <label for="spell">Spell</label><br>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="speed">Speed:</label>
+            <input type="number" id="speed" name="speed" placeholder="tiles per turn" value="1">
+        </div>
+
+        <br>
+        
+        <div>
+            <label for="description">Description: </label>
+            <textarea id="description" name="description" rows="5" cols="70" placeholder="Description of card"></textarea>
+        </div>
+        
+        <br>
+        
+        <button type="reset">Reset Card</button>
+        <button type="submit">Push Card</button> 
+
+    </form>
+    
+    <button id="exit-form">Finish Process</button>
+    
+    <br><br><br><br><br>
+    <p>Made by hidomen</p>
+
+
+    <script>
+        require("./form.js");
+    </script>
+
+
+</body>
+
+</html>
