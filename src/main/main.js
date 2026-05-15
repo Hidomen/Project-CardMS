@@ -38,20 +38,47 @@ function createWindow(){
         console.log("main.js is closed");
     });
 
-    win.webContents.openDevTools();
 }
 
-const menuTemplate = [{
-    label: "demo",
- 
-    submenu: [
-        {
-            label:"help",
-            click: console.log("clicked")
-        }
-    ]
+const menuTemplate = [
+    
+    {
+        label: "devTools",
+    
+        submenu: [
+            {
+                label:"Open",
+                click: function(){
 
-}]
+                    if(null != formWindow){ formWindow.webContents.openDevTools(); }
+                    win.webContents.openDevTools();
+                },
+                accelerator: "CmdOrCtrl + Shift + D"
+            },
+            {
+                label:"Close",
+                click: function(){
+
+                    if(null != formWindow){ formWindow.webContents.openDevTools(false); }
+                    win.webContents.openDevTools(false);
+                }
+            }
+        ]
+    },
+    {
+        label:"Home",
+        click: function(){
+            //return back to homepage
+        }
+    },
+    {
+        label:"Help",
+        click: function(){
+            // opens documentation page
+        }
+    }
+
+]
 
 app.on("ready", function(){
     createWindow();
@@ -87,7 +114,7 @@ ipcMain.on("add-card-clicked", function(event){
         formWindow.show();
     });
 
-    // formWindow.webContents.openDevTools();
+    
 
     formWindow.loadURL(url.format({
         pathname: path.join(__dirname, "../renderer/form.html"),
@@ -100,30 +127,38 @@ ipcMain.on("add-card-clicked", function(event){
 
 ipcMain.on("save-form-data", function(event, data){
 
-    const filePath = path.join(__dirname, "../../data/cards.json");
+    const folderPath = path.join(__dirname, "../../data");
+    const filePath = path.join(folderPath, "cards.json");
 
     let jsonList = [];
 
-    //if exists control
-    try{
+    if(!fs.existsSync(folderPath)){
 
-        const fileData = fs.readFileSync(filePath, "utf8");
-    
-        if(fileData.trim().length > 0){
-            jsonList = JSON.parse(fileData);
-        }
-
-    } catch(error){
-        console.error("Error occured as reading or parse:", error);
-        jsonList = [];
+        fs.mkdirSync(folderPath, { recursive: true});
     }
 
+
+    if(fs.existsSync(filePath)){
+        try{
+            
+            const fileData = fs.readFileSync(filePath, "utf8");
+            
+            if(fileData.trim().length > 0){
+                jsonList = JSON.parse(fileData);
+            }
+            
+        } catch(error){
+            console.error("Error occured as reading or parse:", error);
+            jsonList = [];
+        }
+    }
+        
     jsonList.push(data);
-
+    
     jsonData = JSON.stringify(jsonList, null, 4);
-
+    
     try{
-
+        
         fs.writeFileSync(filePath, jsonData, "utf8");
     } catch(writeErr){
         console.error("Error occured as writting", writeErr);
