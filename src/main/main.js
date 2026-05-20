@@ -18,8 +18,7 @@ function createWindow(){
     win = new BrowserWindow({
         width: 800,
         height: 600,
-        backgroundColor: "#4734f1", //maxWidth and maxHeight is also exists
-        //frame: false,
+        backgroundColor: "#4734f1",
         
         webPreferences: {
             nodeIntegration: true,
@@ -65,19 +64,6 @@ const menuTemplate = [
             }
         ]
     },
-    {
-        label:"Home",
-        click: function(){
-            //return back to homepage
-        }
-    },
-    {
-        label:"Help",
-        click: function(){
-            // opens documentation page
-        }
-    }
-
 ]
 
 app.on("ready", function(){
@@ -90,8 +76,6 @@ app.on("ready", function(){
 
 //    IPC
 //======================================================
-
-//opens a form window, that is a child window of win
 ipcMain.on("add-card-clicked", function(event){
 
     formWindow = new BrowserWindow({
@@ -101,8 +85,8 @@ ipcMain.on("add-card-clicked", function(event){
         show: false,
 
         title: "Add Card Form",
-        width: 400,
-        height: 800,
+        width: 800,
+        height: 850,
 
         webPreferences: {
             nodeIntegration: true,

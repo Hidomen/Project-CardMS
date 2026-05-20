@@ -20,7 +20,7 @@ const cardTypeFactory = {
     },
 
     spell: (baseData, formData) => {
-        const isTargetable = formData.get("targetable") == "on";
+        const isTargetable = formData.get("target-group") == "NONE";
 
         return {
             ...baseData,

@@ -43,3 +43,19 @@ exitButton.addEventListener("click", function(){
 
     ipcRenderer.send("exit-form");
 });
+
+const allExtraFields = document.querySelectorAll(".extra-field");
+
+document.getElementById("card-type").addEventListener("change", function(){
+
+    allExtraFields.forEach(field => {
+        field.style.display = "none";
+    });
+
+    const targetField = document.getElementById(this.value);
+
+    if(targetField){
+
+        targetField.style.display = "block";
+    }
+});

@@ -1,120 +1,137 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <head>
-    <title>CARD EDITOR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Editor</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 
-<body>
-    <h1>Add your card to database</h1>
-    <!-- get id here -->
-    <h3>New Card's ID: </h3>
-    
-    <form method="POST">
+<body class="form-body">
+    <div class="container">
+        <form method="POST" class="form-container">
 
-        <div id="color">
-            <label for="color">Color:</label>
-            <select name="color" id="color">
-                <option value=   "Red">    Red</option>
-                <option value="Orange"> Orange</option>
-                <option value="Yellow"> Yellow</option>
-                <option value= "Green">  Green</option>
-                <option value=  "Cyan">   Cyan</option>
-                <option value=  "Blue">   Blue</option>
-                <option value="Purple"> Purple</option>
-            </select>
-        </div>
+            <div class="topbar">
 
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" 
-            minlength="1" maxlength="20" placeholder="Card Name">
-        </div>
-        
-        <br>
-        
-        <div>
-            <label for="mana-cost">Mana Cost:</label>
-            <input type="number" id="mana-cost" name="mana-cost" placeholder="Cost of Card" value="0" min="0" max="10">
-        </div>
-
-        <br>
-
-        <div id="card-type">
-            <label for="card-type">Card Type:</label>
-            <select name="card-type" id="card-type">
-                <option value="minion">Minion</option>
-                <option value="spell">Spell</option>
-                <option value="item">Item</option>
-                <option value="mana">Mana</option>
-            </select>
-        </div>
-
-        <br>
-
-        <div id="minion field">
-            <label for="speed">Speed:</label>
-            <input type="number" id="speed" name="speed" placeholder="tiles per turn" value="1" min="0" max="10">
-
-            <div>
-                <input type="number" id="attack" name="attack" placeholder="attack power">
-                <input type="number" id="health" name="health" placeholder="health point">
-            </div>
-        </div>
-
-        <div id="spell field">
-            <!-- If targetable spell, which group can it target, type: damage,heal etc.,  -->
-            <label for="is-targetable">Targetable?: </label>
-            <input type="checkbox" name="targetable" id="targetable">
-
-            <div id="target field">
-                <label for="target-group">Target Group: </label>
-                <select name="target-group" id="target-group">
+                <fieldset class="id">
+                    <legend>Card ID</legend>
+                    #001
+                </fieldset>
+                
+                <fieldset id="color" class="color">
+                    <legend>Color</legend>
                     
-                    <option value="SELF">Self</option>
-                    <option value="ANY_PLAYER">Any player</option>
-                    <option value="ENEMY_PLAYER">Enemy player</option>
-
-                    <option value="YOUR_MINION">Your minion</option>
-                    <option value="ANY_MINION">Any minion</option>
-                    <option value="ENEMY_MINION">Enemy minion</option>
+                    <select name="color" id="color">
+                        <option value=   "Red">    Red</option>
+                        <option value="Orange"> Orange</option>
+                        <option value="Yellow"> Yellow</option>
+                        <option value= "Green">  Green</option>
+                        <option value=  "Cyan">   Cyan</option>
+                        <option value=  "Blue">   Blue</option>
+                        <option value="Purple"> Purple</option>
+                    </select>
+                </fieldset>
+                
+                <fieldset class="card-type">
+                    <legend for="card-type">Card Type</legend>
                     
-                    <option value="YOUR_TILE">Your tile</option>
-                    <option value="ANY_TILE">Any tile</option>
-                    <option value="ENEMY_TILE">Enemy tile</option>
-                </select>
+                    <select name="card-type" id="card-type">
+                        <option value="minion">Minion</option>
+                        <option value="spell">Spell</option>
+                        <option value="item">Item</option>
+                        <option value="mana">Mana</option>
+                    </select>
+                </fieldset>
             </div>
-        </div>
 
-        <br>
-        
-        <div>
-            <label for="description">Description: </label>
-            <textarea id="description" name="description" rows="5" cols="70" placeholder="Description of card"></textarea>
-        </div>
+            <div class="form">
 
-        <div>
-            <label for="asset">Asset:</label>
-            <input type="file" name="asset" id="asset" accept="image/png, image/jpeg">
-        </div>
-        
-        <br>
-        
-        <button type="reset">Reset Card</button><br>
-        <button type="submit">Push Card</button><br>
+                <fieldset class="name">
+                    <legend for="name">Name</legend>
+                    <input type="text" id="name" name="name" 
+                    minlength="1" maxlength="20" placeholder="Card Name">
+                </fieldset>
+                
+                <fieldset class="mana-cost">
+                    <legend for="mana-cost">Mana Cost</legend>
+                    <input type="number" id="mana-cost" name="mana-cost" placeholder="Cost of Card" value="0" min="0" max="10">
+                </fieldset>    
+                
+                <fieldset class="description">
+                    <legend for="description">Description</legend>
+                    <textarea id="description" name="description" placeholder="Description of card"></textarea>
+                </fieldset>
+                
+                
+                <fieldset id="empty" class="extra-field"><legend>Attributes</legend></fieldset>
+                
+                <fieldset id="minion" class="extra-field minion">
+                    <legend>Attributes</legend>
 
-    </form>
+                    <input type="number" id="speed"  name="speed"  class="speed"  placeholder="tiles per turn" 
+                    value="1" min="0" max="10">
+                    <input type="number" id="attack" name="attack" class="attack" placeholder="attack power">
+                    <input type="number" id="health" name="health" class="health" placeholder="health point">
+
+                </fieldset>
+                
+                <fieldset id="spell" class="extra-field" style="display: none;">
+                    <legend>Attributes</legend>
+                    <div class="target-field">
+                        <label for="target-group">Target:</label>
+                        
+                        <select name="target-group" id="target-group">
+                            <option value="NONE">None</option>
+                            <option value="SELF">Self</option>
+                            <option value="ANY_PLAYER">Any player</option>
+                            <option value="ENEMY_PLAYER">Enemy player</option>
+                            
+                            <option value="YOUR_MINION">Your minion</option>
+                            <option value="ANY_MINION">Any minion</option>
+                            <option value="ENEMY_MINION">Enemy minion</option>
+                            
+                            <option value="YOUR_TILE">Your tile</option>
+                            <option value="ANY_TILE">Any tile</option>
+                            <option value="ENEMY_TILE">Enemy tile</option>
+                        </select>
+                    </div>
+                    
+                    <label for="spell-type">Spell Type:</label>
+                    
+                    <select id="spell-type">
+                        <option value="DAMAGE">Damage</option>
+                        <option value="HEAL">Heal</option>
+                    </select>
+                    
+                </fieldset>
+                
+                <fieldset class="asset">
+                    <legend>Asset</legend>
+                    <input type="file" name="asset" id="asset" accept="image/png, image/jpeg">
+                </fieldset>
+                
+            </div>
+
+            <div class="buttons">
+
+                <button type="reset" class="btn-reset">Reset</button>
+                <button type="submit" class="btn-submit">Export</button>
+                <button id="exit-form" class="btn-exit">Exit</button>
+            </div>
+                
+            <fieldset class="preview">
+                <legend class="preview-title">Card Preview</legend>
+                <div class="preview-card">No data entried</div>
+            </fieldset>
+        </form>
+    </div>
     
-    <button id="exit-form">Finish Process</button><br>
-    
-
     <script>
         require("./form.js");
     </script>
-
-
 </body>
 
 </html>
