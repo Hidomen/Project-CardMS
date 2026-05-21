@@ -5,17 +5,17 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const path = require("path");
 const url = require("url");
-const Menu = electron.Menu;
 
 const fs = require("fs");
 
 const ipcMain = electron.ipcMain;
 
+const {setMainMenu, setAddCardMenu} = require("./menuTemplate.js");
 
-let win, formWindow;
+let mainWindow, addCardWindow;
 
 function createWindow(){
-    win = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         backgroundColor: "#4734f1",
@@ -26,60 +26,34 @@ function createWindow(){
         }
     });
 
-    win.loadURL(url.format({
+    
+    
+    mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, "../renderer/index.html"),
         protocol: "file",
         slashes: true
     }));
+    
+    setMainMenu(mainWindow);
 
-    win.on("closed", () => {
-        win = null;
+    mainWindow.on("closed", () => {
+        mainWindow = null;
         console.log("main.js is closed");
     });
 
 }
 
-const menuTemplate = [
-    
-    {
-        label: "devTools",
-    
-        submenu: [
-            {
-                label:"Open",
-                click: function(){
-
-                    if(null != formWindow){ formWindow.webContents.openDevTools(); }
-                    win.webContents.openDevTools();
-                },
-                accelerator: "CmdOrCtrl + Shift + D"
-            },
-            {
-                label:"Close",
-                click: function(){
-
-                    if(null != formWindow){ formWindow.webContents.openDevTools(false); }
-                    win.webContents.openDevTools(false);
-                }
-            }
-        ]
-    },
-]
 
 app.on("ready", function(){
     createWindow();
-
-    const menu = Menu.buildFromTemplate(menuTemplate);
-    Menu.setApplicationMenu(menu);
-    
 });
 
 //    IPC
 //======================================================
 ipcMain.on("add-card-clicked", function(event){
 
-    formWindow = new BrowserWindow({
-        parent: win,
+    addCardWindow = new BrowserWindow({
+        parent: mainWindow,
         modal: true,
 
         show: false,
@@ -94,13 +68,15 @@ ipcMain.on("add-card-clicked", function(event){
         }
     });
 
-    formWindow.once("ready-to-show", ()=> {
-        formWindow.show();
+    setAddCardMenu(addCardWindow);
+
+    addCardWindow.once("ready-to-show", ()=> {
+        addCardWindow.show();
     });
 
     
 
-    formWindow.loadURL(url.format({
+    addCardWindow.loadURL(url.format({
         pathname: path.join(__dirname, "../renderer/form.html"),
         protocol: "file",
         slashes:true
@@ -155,6 +131,6 @@ ipcMain.on("exit-form", function(){
 
     console.log("form is closing by main.js");
 
-    formWindow.close();
-    formWindow = null;
+    addCardWindow.close();
+    addCardWindow = null;
 });
