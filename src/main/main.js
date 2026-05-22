@@ -29,7 +29,7 @@ function createWindow(){
     
     
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, "../renderer/index.html"),
+        pathname: path.join(__dirname, "../renderer/main-menu.html"),
         protocol: "file",
         slashes: true
     }));
@@ -77,7 +77,7 @@ ipcMain.on("add-card-clicked", function(event){
     
 
     addCardWindow.loadURL(url.format({
-        pathname: path.join(__dirname, "../renderer/form.html"),
+        pathname: path.join(__dirname, "../renderer/add-card.html"),
         protocol: "file",
         slashes:true
     }));

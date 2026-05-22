@@ -44,11 +44,11 @@ exitButton.addEventListener("click", function(){
     ipcRenderer.send("exit-form");
 });
 
-const allExtraFields = document.querySelectorAll(".extra-field");
+const allDetailsFields = document.querySelectorAll(".details");
 
 document.getElementById("card-type").addEventListener("change", function(){
 
-    allExtraFields.forEach(field => {
+    allDetailsFields.forEach(field => {
         field.style.display = "none";
     });
 

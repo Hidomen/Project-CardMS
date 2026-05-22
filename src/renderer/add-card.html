@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Editor</title>
+    
+    <link rel="stylesheet" href="../assets/css/globals.css">
+    <link rel="stylesheet" href="../assets/css/pages/add-card.css">
+</head>
+
+
+<body>
+    <form method="POST" class="container">
+
+        <div class="topbar">
+
+            <fieldset class="id">
+                <legend>Card ID</legend>
+                #001
+            </fieldset>
+            
+            <fieldset id="color" class="color">
+                <legend>Color</legend>
+                
+                <select name="color" id="color">
+                    <option value=   "Red">    Red</option>
+                    <option value="Orange"> Orange</option>
+                    <option value="Yellow"> Yellow</option>
+                    <option value= "Green">  Green</option>
+                    <option value=  "Cyan">   Cyan</option>
+                    <option value=  "Blue">   Blue</option>
+                    <option value="Purple"> Purple</option>
+                </select>
+            </fieldset>
+            
+            <fieldset class="card-type">
+                <legend for="card-type">Card Type</legend>
+                
+                <select name="card-type" id="card-type">
+                    <option value="minion">Minion</option>
+                    <option value="spell">Spell</option>
+                    <option value="item">Item</option>
+                    <option value="mana">Mana</option>
+                </select>
+            </fieldset>
+        </div>
+
+        <div class="form">
+
+            <fieldset class="name">
+                <legend for="name">Name</legend>
+                <input type="text" id="name" name="name" 
+                minlength="1" maxlength="20" placeholder="Card Name">
+            </fieldset>
+            
+            <fieldset class="mana-cost">
+                <legend for="mana-cost">Mana Cost</legend>
+                <input type="number" id="mana-cost" name="mana-cost" placeholder="Cost of Card" value="0" min="0" max="10">
+            </fieldset>    
+            
+            <fieldset class="description">
+                <legend for="description">Description</legend>
+                <textarea id="description" name="description" placeholder="Description of card"></textarea>
+            </fieldset>
+            
+            
+            <fieldset id="empty" class="details"></fieldset>
+            
+            <fieldset id="minion" class="details" style="display: none;">
+                <legend>Attributes</legend>
+
+                <input type="number" id="speed"  name="speed"  class="speed"  placeholder="tiles per turn" 
+                value="1" min="0" max="10">
+                <input type="number" id="attack" name="attack" class="attack" placeholder="attack power">
+                <input type="number" id="health" name="health" class="health" placeholder="health point">
+
+            </fieldset>
+            
+            <fieldset id="spell" class="details" style="display: none;">
+                <legend>Specs</legend>
+                <div class="target-field">
+                    <label for="target-group">Target:</label>
+                    
+                    <select name="target-group" id="target-group">
+                        <option value="NONE">None</option>
+                        <option value="SELF">Self</option>
+                        <option value="ANY_PLAYER">Any player</option>
+                        <option value="ENEMY_PLAYER">Enemy player</option>
+                        
+                        <option value="YOUR_MINION">Your minion</option>
+                        <option value="ANY_MINION">Any minion</option>
+                        <option value="ENEMY_MINION">Enemy minion</option>
+                        
+                        <option value="YOUR_TILE">Your tile</option>
+                        <option value="ANY_TILE">Any tile</option>
+                        <option value="ENEMY_TILE">Enemy tile</option>
+                    </select>
+                </div>
+                
+                <label for="spell-type">Spell Type:</label>
+                
+                <select id="spell-type">
+                    <option value="DAMAGE">Damage</option>
+                    <option value="HEAL">Heal</option>
+                </select>
+                
+            </fieldset>
+            
+            <fieldset class="asset">
+                <legend>Asset</legend>
+                <input type="file" name="asset" id="asset" accept="image/png, image/jpeg">
+            </fieldset>
+            
+        </div>
+
+        <div class="buttons">
+
+            <button type="reset" class="btn-reset">Reset</button>
+            <button type="submit" class="btn-submit">Export</button>
+            <button id="exit-form" class="btn-exit">Exit</button>
+        </div>
+            
+        <fieldset class="preview">
+            <legend class="preview-title">Card Preview</legend>
+            <div class="preview-card">No data entried</div>
+        </fieldset>
+    </form>
+    
+    <script>
+        require("./add-card.js");
+    </script>
+</body>
+
+</html>

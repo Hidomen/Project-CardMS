@@ -1,0 +1,121 @@
+@import url("../globals.css");
+
+body{
+
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 40px;                 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+
+    width: max-content;
+    margin: 10px auto;
+}
+
+.container{
+    
+    grid-template-columns: repeat(2, 300px);
+    grid-template-rows: 1fr minmax(400px, 500px) 1fr;
+    
+    display:grid;
+
+    grid-template-areas:    "topbar topbar"
+                            "form preview"
+                            "button button";
+}
+
+/* TOPBAR */
+.topbar{
+    grid-area: topbar;
+
+    background-color: var(--second-bg-color);
+
+    display: grid;
+
+    grid-template-areas: "id color cardtype";
+}
+
+.id{ grid-area: id; }
+.color{ grid-area: color; }
+.card-type{ grid-area: cardtype; }
+
+/* FORM */
+.form{
+    grid-area: form;
+
+    display: grid;
+
+    grid-template-rows: 1fr 3fr 3fr 1fr;
+
+    grid-template-areas:    "name mana-cost"
+                            "description description"
+                            "details details"
+                            "asset asset";
+}
+
+.name{ grid-area: name; }
+
+.mana-cost{ grid-area: mana-cost; }
+
+.mana-cost [type="number"]{
+    width: 80%;
+}
+
+.description{ grid-area: description; }
+
+.description textarea{
+    resize: none;
+    min-height: 50px;
+    height: 80%;
+}
+
+.asset{ grid-area: asset; }
+.details{ grid-area: details; }
+
+/* PREVIEW */
+.preview{
+    grid-area: preview;
+
+    background: linear-gradient(135deg, #3d1e6d, #251345);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    
+    align-content: center;
+    justify-items: center;
+}
+
+.preview-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.preview-card{ color:red; }
+
+/* BUTTONS */
+.buttons{
+    grid-area: button;
+
+    display: grid;
+
+    justify-items: center;
+    align-items: center;
+
+    grid-template-areas: "reset submit exit";
+}
+
+.btn-reset{
+    grid-area: reset;
+
+    background-color: #e63946;
+}
+
+.btn-submit{
+    grid-area: submit;
+
+    background-color: #8a2be2;
+}
+
+.btn-exit{
+    grid-area: exit;
+
+    background-color: #2a9d8f;
+}

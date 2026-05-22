@@ -1,0 +1,25 @@
+@import url("../globals.css");
+
+body{
+    background-color: var(--bg-color);
+}
+
+.buttons > * {
+    margin: 8px;
+}
+
+.btn-add-card {
+    background-color: #3d3b41;
+}
+
+.btn-view-card {
+    background-color: #000000;
+}
+
+.btn-edit-card {
+    background-color: #000000;
+}
+
+.btn-update-lib {
+    background-color: #000000;
+}
