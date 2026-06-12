@@ -1,78 +1,26 @@
-:root{
-    /* --bg-color: #0f0f12; */
-    --primary-color: #ffffff;
+@import url("./base/variables.css");
+@import url("./base/components.css");
 
-    --bg-color: #1a1a22;
-    --second-bg-color: #252530;
-    
-    --border-color: #2d2d3a;
-    
-}
+@import url('https://fonts.googleapis.com/css?family=Syne%20Mono:700|Syne%20Mono:400');
 
 *{
-    font-family:'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color:var(--primary-color);
-}
+    font-family: "Syne Mono", system-ui;
 
-body{
-    background-color: var(--bg-color);
-
-    justify-items: center;
-}
-
-fieldset {
-    border: 2px solid #2d2d3a;
-    background-color: #1e1e24;
-    border-radius: 10px;
-
-    margin: 4px;
-}
-
-fieldset > * {
-    padding: 1px;
-    margin: 3px;
-}
-
-button{
-    border: none;
-    border-radius: 8px;
-
-    font-weight: bold;
-    padding: 12px 20px;
-
-    cursor: pointer;
+    box-sizing: border-box;
     
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-
-    width: 80%;
-    height: 80%;
-}
-
-[type="text"], 
-[type="number"], 
-select, 
-textarea{
-    width: 90%;
-    padding: 5px 5px;
+    z-index: 1;
     
-    border: 1px solid #3a3a4c;
-    border-radius: 6px;
-    
-    background-color: #14141a;
-    font-size: 16px;
-
     color: var(--primary-color);
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: #8a2be2;
-    outline: none;
-    box-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
-}
+body{
+    margin: 0;
+    padding: 0;
 
-label{
-    font-size: 15px;
-    font-weight: bold;
+    overflow: hidden;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: var(--def-bg-color);
 }

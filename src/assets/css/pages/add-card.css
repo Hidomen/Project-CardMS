@@ -1,15 +1,14 @@
 @import url("../globals.css");
 
 body{
-
-    background-color: var(--bg-color);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 40px;                 
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+
+    margin: 10px auto;
+    padding: 40px;
 
     width: max-content;
-    margin: 10px auto;
+
+    box-shadow: 0 20px 50px rgba(255, 255, 255, 0.37);
 }
 
 .container{
@@ -18,33 +17,22 @@ body{
     grid-template-rows: 1fr minmax(400px, 500px) 1fr;
     
     display:grid;
-
     grid-template-areas:    "topbar topbar"
                             "form preview"
-                            "button button";
+                            "buttons buttons";
 }
 
-/* TOPBAR */
 .topbar{
     grid-area: topbar;
 
-    background-color: var(--second-bg-color);
-
-    display: grid;
-
-    grid-template-areas: "id color cardtype";
+    display: flex;
+    flex-direction: row;
 }
 
-.id{ grid-area: id; }
-.color{ grid-area: color; }
-.card-type{ grid-area: cardtype; }
-
-/* FORM */
 .form{
     grid-area: form;
 
     display: grid;
-
     grid-template-rows: 1fr 3fr 3fr 1fr;
 
     grid-template-areas:    "name mana-cost"
@@ -53,32 +41,15 @@ body{
                             "asset asset";
 }
 
-.name{ grid-area: name; }
+.name       { grid-area: name;          }
+.mana-cost  { grid-area: mana-cost;     }
+.description{ grid-area: description;   }
+.asset      { grid-area: asset;         }
+.details    { grid-area: details;       }
 
-.mana-cost{ grid-area: mana-cost; }
-
-.mana-cost [type="number"]{
-    width: 80%;
-}
-
-.description{ grid-area: description; }
-
-.description textarea{
-    resize: none;
-    min-height: 50px;
-    height: 80%;
-}
-
-.asset{ grid-area: asset; }
-.details{ grid-area: details; }
-
-/* PREVIEW */
 .preview{
     grid-area: preview;
 
-    background: linear-gradient(135deg, #3d1e6d, #251345);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    
     align-content: center;
     justify-items: center;
 }
@@ -88,34 +59,12 @@ body{
     font-weight: bold;
 }
 
-.preview-card{ color:red; }
-
-/* BUTTONS */
 .buttons{
-    grid-area: button;
+    grid-area: buttons;
 
-    display: grid;
+    display: flex;
+    flex-direction: row;
 
     justify-items: center;
     align-items: center;
-
-    grid-template-areas: "reset submit exit";
-}
-
-.btn-reset{
-    grid-area: reset;
-
-    background-color: #e63946;
-}
-
-.btn-submit{
-    grid-area: submit;
-
-    background-color: #8a2be2;
-}
-
-.btn-exit{
-    grid-area: exit;
-
-    background-color: #2a9d8f;
 }

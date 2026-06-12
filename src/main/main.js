@@ -16,9 +16,8 @@ let mainWindow, addCardWindow;
 
 function createWindow(){
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        backgroundColor: "#4734f1",
+        width: 1200,
+        height: 800,
         
         webPreferences: {
             nodeIntegration: true,
@@ -26,8 +25,6 @@ function createWindow(){
         }
     });
 
-    
-    
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, "../renderer/main-menu.html"),
         protocol: "file",
@@ -73,8 +70,6 @@ ipcMain.on("add-card-clicked", function(event){
     addCardWindow.once("ready-to-show", ()=> {
         addCardWindow.show();
     });
-
-    
 
     addCardWindow.loadURL(url.format({
         pathname: path.join(__dirname, "../renderer/add-card.html"),
@@ -124,7 +119,8 @@ ipcMain.on("save-form-data", function(event, data){
         console.error("Error occured as writting", writeErr);
         return;
     }
-    console.log("Data succesfully added to: cards.json, total length:", jsonList.length); 
+
+    mainWindow.webContents.send("card-saved", jsonList.length);
 });
 
 ipcMain.on("exit-form", function(){

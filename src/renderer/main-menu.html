@@ -5,29 +5,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Editor</title>
 
-    <link rel="stylesheet" href="../assets/css/globals.css">
+    <title>Project CardMS</title>
+
     <link rel="stylesheet" href="../assets/css/pages/main-menu.css">
-</head>
-
 <body>
-    <div class="container">
 
-        <h2>Welcome to Project-CardMS</h2>
-        
-        <div class="buttons">
-            
-            <button id="addCardButton" class="btn-add-card">
-                Add Card</button>
-            <button id="viewCardButton" class="btn-view-card">
-                View Card</button>
-            <button id="editCardButton" class="btn-edit-card">
-                Edit Card</button>
-            <button id="updateLibButton" class="btn-update-lib">
-                Update Library</button>
+    <img src="../assets/images/scanlines.png" class="scanlines">
+
+    <div class="topper-bar">
+        <div class="library-goal">V 0.1.0</div>
+        <div class="selected-save">NO FILE SELECTED</div>
+    </div>
+
+    <div class="topbar">
+        <div class="left-side">
+            <div class="file-name">MAIN DIR: NOT SPECIFIED</div>
+            <div class="title">PROJECT NAME</div>
         </div>
-    
+
+        <div class="right-side">
+            <div class="library-size">LIBRARY SIZE: 0</div>
+            <div class="time">TIME:</div>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class="save-dir">
+            <div class="save-dir__title">SAVE DIRECTORY</div>
+
+            <div class="save-dir__files" id="saveFiles">
+
+                <div class="save-dir__option" id="saveAdd">+ add save file</div>
+                
+                <div class="save-dir__option" id="saveSelect">> file1</div>
+            
+            </div>
+
+        </div>
+
+        <div class="library">
+            <div class="library__border">
+
+                <div class="library__title">Library</div>
+
+
+                <div class="library__buttons">
+                    <button id="addCardButton" class="btn-add-card">
+                        [+]</button>
+                    <button id="syncButton" class="btn-sync">
+                        [S]</button>
+                    <button id="deleteButton" class="btn-delete">
+                        [D]</button>
+            
+                </div>  
+
+            </div>
+
+        </div>
+
+        <div class="template">
+            <div class="template__content">You have no template.</div>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal__title">Terminal</div>
+
+            <div id="terminalContent" class="terminal__content">
+                
+            </div>
+        </div>
+
+        <div class="filters">
+            <div class="filters__color">
+                <select name="color-select" id="colorSelect">
+                    <option value="def-bg">ALL</option>
+                    <option value="red-bg">RED</option>
+                    <option value="orange-bg">ORANGE</option>
+                    <option value="yellow-bg">YELLOW</option>
+                    <option value="green-bg">GREEN</option>
+                    <option value="blue-bg">BLUE</option>
+                    <option value="purple-bg">PURPLE</option>
+                    <option value="pink-bg">PINK</option>
+                </select>
+            </div>
+            <div class="filters__variation"></div>
+        </div>
+
+        <div class="stats">
+            <div class="stats__title">STATISTICS</div>
+        </div>
     </div>
         
     <script>

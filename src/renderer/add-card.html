@@ -5,14 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Editor</title>
     
-    <link rel="stylesheet" href="../assets/css/globals.css">
+    <title>Project CardMS</title>
+    
     <link rel="stylesheet" href="../assets/css/pages/add-card.css">
 </head>
 
 
 <body>
+    <img src="../assets/images/scanlines.png" class="scanlines">
+
     <form method="POST" class="container">
 
         <div class="topbar">
@@ -30,9 +32,9 @@
                     <option value="Orange"> Orange</option>
                     <option value="Yellow"> Yellow</option>
                     <option value= "Green">  Green</option>
-                    <option value=  "Cyan">   Cyan</option>
                     <option value=  "Blue">   Blue</option>
                     <option value="Purple"> Purple</option>
+                    <option value=  "Pink">   Pink</option>
                 </select>
             </fieldset>
             
@@ -65,7 +67,6 @@
                 <legend for="description">Description</legend>
                 <textarea id="description" name="description" placeholder="Description of card"></textarea>
             </fieldset>
-            
             
             <fieldset id="empty" class="details"></fieldset>
             
@@ -127,6 +128,7 @@
             <legend class="preview-title">Card Preview</legend>
             <div class="preview-card">No data entried</div>
         </fieldset>
+        
     </form>
     
     <script>

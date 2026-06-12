@@ -1,0 +1,24 @@
+:root{
+    --primary-color: #ffffff;
+
+    --border-color: #2d2d3a;
+
+    --def-bg-color: #0f0f0f;
+
+    --red-bg-color: #B30000;
+    --orange-bg-color: #B37400;
+    --yellow-bg-color: #B2B300;
+    --green-bg-color: #00B300;
+    --blue-bg-color: #0000B3;
+    --purple-bg-color: #590059;
+    --pink-bg-color: #B300B2;
+}
+
+.def-bg     { background-color: var(--def-bg-color);    }
+.red-bg     { background-color: var(--red-bg-color);    }
+.orange-bg  { background-color: var(--orange-bg-color); }
+.yellow-bg  { background-color: var(--yellow-bg-color); }
+.green-bg   { background-color: var(--green-bg-color);  }
+.blue-bg    { background-color: var(--blue-bg-color);   }
+.purple-bg  { background-color: var(--purple-bg-color); }
+.pink-bg    { background-color: var(--pink-bg-color);   }
